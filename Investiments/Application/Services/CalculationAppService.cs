@@ -2,12 +2,12 @@
 
 namespace Investiments.Application.Services
 {
-    public class CalculationAppService
+    public static class CalculationAppService
     {
 
-        public static CdbCalculation CalculateCDB(CdbCalculationRequest cdb, int months)
+        public static CdbCalculation CalculateCDB(CdbCalculationRequest cdb)
         {
-            return new CdbCalculation();
+            return CdbCalculator.Calculate(cdb);
         }
 
     }

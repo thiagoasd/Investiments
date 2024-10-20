@@ -12,13 +12,13 @@ namespace Investiments.Tests.Application.Services
             CdbCalculationRequest request = new()
             {
                 BankTax = 1.08M,
-                CDI = 0.9M,
+                CDI = 0.009M,
                 InitialValue = 1000,
                 Months = 1
             };
 
-            var result = CalculationAppService.CalculateCDB(request, 1);
-            Assert.Equal(1001.00972M, result.values[0].Item2);
+            var result = CalculationAppService.CalculateCDB(request);
+            Assert.Equal(1009.720M, result.values[0]);
 
         }
     }
