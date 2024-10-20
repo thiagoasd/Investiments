@@ -1,6 +1,6 @@
 ﻿namespace Investiments.Application.DTOs
 {
-    public class CDBCalculation
+    public class CdbCalculation
     {
         public decimal InitialValue { get; set; }
         public decimal BankTax { get; set; }

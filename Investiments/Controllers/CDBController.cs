@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Investiments.Controllers
 {
-    public class CDBController : Controller
+    public class CdbController : Controller
     {
         // GET: CDBController
         public ActionResult Index()

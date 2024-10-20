@@ -2,7 +2,7 @@
 
 namespace Investiments.Application.DTOs
 {
-    public class CDBCalculationRequest
+    public class CdbCalculationRequest
     {
         [Required]
         [Range(minimum: 0, maximum: int.MaxValue, ErrorMessage = "Only positive value are allowed")]
@@ -18,6 +18,6 @@ namespace Investiments.Application.DTOs
         [Required]
         [Range(minimum: 1,maximum: int.MaxValue, ErrorMessage = "Only positive months are allowed")]
         public int Months { get; set; }
-        public CDBCalculationRequest() { }
+        public CdbCalculationRequest() { }
     }
 }

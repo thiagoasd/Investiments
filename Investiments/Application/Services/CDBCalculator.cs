@@ -2,12 +2,12 @@
 
 namespace Investiments.Application.Services
 {
-    public static class CDBCalculator
+    public static class CdbCalculator
     {
 
-        public static CDBCalculation Calculate(CDBCalculationRequest request)
+        public static CdbCalculation Calculate(CdbCalculationRequest request)
         {
-            return new CDBCalculation();
+            return null;
         }
     }
 }
