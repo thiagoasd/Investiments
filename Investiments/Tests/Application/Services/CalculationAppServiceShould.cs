@@ -18,7 +18,7 @@ namespace Investiments.Tests.Application.Services
             };
 
             var result = CalculationAppService.CalculateCDB(request);
-            Assert.Equal(1009.720M, result.values[0]);
+            Assert.Equal(1009.720M, result.Values[0]);
 
         }
     }

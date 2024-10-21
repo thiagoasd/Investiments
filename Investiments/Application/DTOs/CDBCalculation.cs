@@ -6,7 +6,7 @@
         public decimal BankTax { get; set; }
         public decimal CDI { get; set; }
 
-        public List<decimal> values = [];
+        public List<decimal> Values { get; set; } = [];
 
     }
 }

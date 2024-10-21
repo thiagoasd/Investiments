@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
+﻿using Microsoft.AspNetCore.Mvc;
+using Investiments.Application.DTOs;
+using Investiments.Application.Services;
 namespace Investiments.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class CdbController : Controller
     {
-        // GET: CDBController
-        public ActionResult Index()
+        [HttpPost]
+        public CdbCalculation GetCdbCalculation(CdbCalculationRequest request)
         {
-            return View();
+            var result = CalculationAppService.CalculateCDB(request);
+            return result;
         }
-
     }
 }

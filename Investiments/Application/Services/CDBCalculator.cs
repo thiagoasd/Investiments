@@ -26,16 +26,16 @@ namespace Investiments.Application.Services
         private static void CalculateNextMonth(CdbCalculation calculation)
         {
             decimal value;
-            if (calculation.values.Count == 0)
+            if (calculation.Values.Count == 0)
             {
                 value = calculation.InitialValue * (1 + (calculation.CDI * calculation.BankTax));
             } else
             {
-                var calculationCount = calculation.values.Count;
-                value = calculation.values[calculationCount - 1] * (1 + (calculation.CDI * calculation.BankTax));
+                var calculationCount = calculation.Values.Count;
+                value = calculation.Values[calculationCount - 1] * (1 + (calculation.CDI * calculation.BankTax));
             }
 
-            calculation.values.Add(value);
+            calculation.Values.Add(value);
         }
     }
 }
