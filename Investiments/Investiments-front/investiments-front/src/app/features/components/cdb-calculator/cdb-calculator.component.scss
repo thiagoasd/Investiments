@@ -1,0 +1,20 @@
+.errorMessage{
+    color: red;
+    font-weight: bold;
+}
+
+.cdbTable{
+    margin: 1em 0 1em 0;
+    min-width: 100px;
+}
+
+.cdb-calculator-title{
+    font-size: medium;
+    margin-bottom: 1em;
+}
+
+.cdb-calculator-inputs{
+    display: flex;
+    margin: 2em 0 2em 0;
+    column-gap: 1em;
+}
