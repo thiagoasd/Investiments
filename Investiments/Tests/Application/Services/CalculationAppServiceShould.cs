@@ -1,6 +1,5 @@
 ﻿using Investiments.Application.DTOs;
 using Investiments.Application.Services;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using Xunit;
 
 namespace Investiments.Tests.Application.Services
