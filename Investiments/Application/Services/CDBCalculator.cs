@@ -15,27 +15,65 @@ namespace Investiments.Application.Services
                 InitialValue = request.InitialValue
             };
             
-            for(var x = 1; x <= request.Months; x++)
+            for(var month = 1; month <= request.Months; month++)
             {
-                CalculateNextMonth(calculation);
+                CalculateNextMonth(calculation, month);
             }
 
             return calculation;
         }
 
-        private static void CalculateNextMonth(CdbCalculation calculation)
+        private static void CalculateNextMonth(CdbCalculation calculation, int month)
         {
-            decimal value;
-            if (calculation.Values.Count == 0)
+            MonthlyCalculation? previousCalculation = calculation.GetValueByMonth(month - 1);
+
+
+            MonthlyCalculation monthCalculation = new()
             {
-                value = calculation.InitialValue * (1 + (calculation.CDI * calculation.BankTax));
+                Month = month
+            };
+
+            if (previousCalculation == null)
+            {
+                monthCalculation.GrossValue = calculation.InitialValue * (1 + (calculation.CDI * calculation.BankTax));
             } else
             {
-                var calculationCount = calculation.Values.Count;
-                value = calculation.Values[calculationCount - 1] * (1 + (calculation.CDI * calculation.BankTax));
+                monthCalculation.GrossValue = previousCalculation.GrossValue * (1 + (calculation.CDI * calculation.BankTax));
             }
 
-            calculation.Values.Add(value);
+            CalculateTaxValue(monthCalculation, calculation.InitialValue);
+            CalculateLiquidValue(monthCalculation);
+
+            calculation.Values.Add(monthCalculation);
+        }
+
+        private static void CalculateTaxValue(MonthlyCalculation calculation, decimal initialValue)
+        {
+            decimal taxPercent = GetTaxPercent(calculation.Month);
+            calculation.TaxValue =  taxPercent * (calculation.GrossValue - initialValue);
+        }
+        private static void CalculateLiquidValue(MonthlyCalculation calculation)
+        {
+            calculation.LiquidValue = calculation.GrossValue - calculation.TaxValue;
+        }
+
+        private static decimal GetTaxPercent(int month)
+        {
+            if (month > 24)
+            {
+                return 0.15m;
+            }
+            else if(month > 12)
+            {
+                return 0.175m;
+            }
+            else if(month > 6)
+            {
+                return 0.2m;
+            } else
+            {
+                return 0.225m;
+            }
         }
     }
 }
