@@ -39,3 +39,5 @@ Execute os seguintes comando:
 npm run test
 ```
 
+Coverage dos testes backend
+![image](https://github.com/user-attachments/assets/beb674ec-6cd8-497b-a0d3-c83ffe7f2ce2)
