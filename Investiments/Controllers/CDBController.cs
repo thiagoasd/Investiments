@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Investiments.Application.DTOs;
 using Investiments.Application.Services;
+using Microsoft.ApplicationInsights;
+using Microsoft.AspNetCore.Mvc.Filters;
 namespace Investiments.Controllers
 {
     [ApiController]
@@ -8,10 +10,21 @@ namespace Investiments.Controllers
     public class CdbController : Controller
     {
         [HttpPost]
+        [Obsolete]
         public CdbCalculation GetCdbCalculation(CdbCalculationRequest request)
         {
-            var result = CalculationAppService.CalculateCDB(request);
-            return result;
+            try
+            {
+                var result = CalculationAppService.CalculateCDB(request);
+                return result;
+            }
+            catch (Exception ex) {
+                var ai = new TelemetryClient();
+                ai.TrackException(ex);
+            }
+
+            return new CdbCalculation();
+
         }
     }
 }
