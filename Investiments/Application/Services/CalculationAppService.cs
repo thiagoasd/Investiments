@@ -8,10 +8,6 @@ namespace Investiments.Application.Services
         public static CdbCalculation CalculateCDB(CdbCalculationRequest cdb)
         {
             var calculation = CdbCalculator.Calculate(cdb);
-            using (var context = new CalculationDbContext())
-            {
-                context.Add(cdb);
-            }
 
             return calculation;
         }

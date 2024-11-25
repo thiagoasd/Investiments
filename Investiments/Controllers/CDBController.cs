@@ -5,12 +5,16 @@ namespace Investiments.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class CdbController : Controller
+    public class CdbController(CalculationDbContext context) : Controller
     {
+        public CalculationDbContext Context { get; set; } = context;
+
         [HttpPost]
         public CdbCalculation GetCdbCalculation(CdbCalculationRequest request)
         {
             var result = CalculationAppService.CalculateCDB(request);
+            Context.Add(result);
+            Context.SaveChanges();
             return result;
         }
     }
