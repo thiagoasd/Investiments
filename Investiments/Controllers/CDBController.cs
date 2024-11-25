@@ -21,6 +21,8 @@ namespace Investiments.Controllers
             catch (Exception ex) {
                 var ai = new TelemetryClient();
                 ai.TrackException(ex);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
 
             return new CdbCalculation();
