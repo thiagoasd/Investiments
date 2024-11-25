@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/6393e405-3434-426a-a534-284e7d3c2d8a/resourceGroups/investments/providers/Microsoft.Web/sites/InvestmentsApp",
+    "appService.deploySubpath": "investiments-front\\dist\\investiments-front\\browser"
+}
