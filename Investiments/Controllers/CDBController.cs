@@ -10,7 +10,6 @@ namespace Investiments.Controllers
     public class CdbController : Controller
     {
         [HttpPost]
-        [Obsolete]
         public CdbCalculation GetCdbCalculation(CdbCalculationRequest request)
         {
             try
@@ -19,14 +18,10 @@ namespace Investiments.Controllers
                 return result;
             }
             catch (Exception ex) {
-                var ai = new TelemetryClient();
-                ai.TrackException(ex);
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
+                throw;
             }
-
-            return new CdbCalculation();
-
         }
     }
 }
