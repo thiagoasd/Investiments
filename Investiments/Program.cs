@@ -14,10 +14,6 @@ var connection = builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTION
 
 builder.Services.AddDbContext<CalculationDbContext>(options =>
     options.UseSqlServer(connection));
-builder.Services.AddApplicationInsightsTelemetry(new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions
-{
-    ConnectionString = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]
-});
 
 var app = builder.Build();
 
