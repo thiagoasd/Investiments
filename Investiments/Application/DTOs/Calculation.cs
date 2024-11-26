@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Investiments.Application.DTOs
 {
-    public class CdbCalculation
+    public class Calculation
     {
         public int Id { get; set; }
+        public InvestmentType InvestmentType { get; set; }
         public decimal InitialValue { get; set; }
         public decimal BankTax { get; set; }
         public decimal CDI { get; set; }
@@ -27,6 +28,12 @@ namespace Investiments.Application.DTOs
         public decimal LiquidValue { get; set; }
     }
 
+    public enum InvestmentType
+    {
+        CDB,
+        LC
+    }
+
     public class CalculationDbContext : DbContext
     {
         public CalculationDbContext()
@@ -38,6 +45,6 @@ namespace Investiments.Application.DTOs
         {
         }
 
-        public DbSet<CdbCalculation> Calculations { get; set; }
+        public DbSet<Calculation> Calculations { get; set; }
     }
 }

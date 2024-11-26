@@ -9,7 +9,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBGrossValue()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -33,7 +33,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBLiquidValue()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -55,7 +55,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBValuesFor7Months()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -79,7 +79,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBValuesFor10Months()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -103,7 +103,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBValuesFor12Months()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -127,7 +127,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBValuesFor13Months()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -151,7 +151,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBValuesFor24Months()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,
@@ -176,7 +176,7 @@ namespace Investiments.Tests.Application.Services
         [Fact]
         public void ShouldCalculateCDBValuesFor25Months()
         {
-            CdbCalculationRequest request = new()
+            CalculationRequest request = new()
             {
                 BankTax = 1.08M,
                 CDI = 0.009M,

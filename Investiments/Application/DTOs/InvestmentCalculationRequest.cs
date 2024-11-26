@@ -2,7 +2,7 @@
 
 namespace Investiments.Application.DTOs
 {
-    public class CdbCalculationRequest
+    public class InvestmentCalculationRequest
     {
         [Required]
         [Range(minimum: 0, maximum: int.MaxValue, ErrorMessage = "Only positive value are allowed")]
@@ -10,14 +10,14 @@ namespace Investiments.Application.DTOs
 
         [Required]
         [Range(minimum: 0, maximum: int.MaxValue, ErrorMessage = "Only positive value are allowed")]
-        public decimal BankTax { get; set; }
+        public decimal CDI { get; set; }
 
         [Required]
-        [Range(minimum: 0, maximum: int.MaxValue, ErrorMessage = "Only positive value are allowed")]
-        public decimal CDI { get; set; }
-        [Required]
-        [Range(minimum: 1,maximum: int.MaxValue, ErrorMessage = "Only positive months are allowed")]
+        [Range(minimum: 1, maximum: int.MaxValue, ErrorMessage = "Only positive months are allowed")]
         public int Months { get; set; }
-        public CdbCalculationRequest() { }
+
+        public Tuple<InvestmentType, decimal>[] Investments { get; set; } = [];
+
+        public InvestmentCalculationRequest() { }
     }
 }

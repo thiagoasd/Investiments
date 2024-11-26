@@ -10,11 +10,21 @@ namespace Investiments.Controllers
         public CalculationDbContext Context { get; set; } = context;
 
         [HttpPost]
-        public CdbCalculation GetCdbCalculation(CdbCalculationRequest request)
+        public Calculation GetCdbCalculation(CalculationRequest request)
         {
             var result = CalculationAppService.CalculateCDB(request);
-            Context.Add(result);
-            Context.SaveChanges();
+            //Context.Add(result);
+            //Context.SaveChanges();
+            return result;
+        }
+
+        [HttpPost]
+        [Route("GetCalculation")]
+        public InvestmentsCalculation GetCalculation(InvestmentCalculationRequest request)
+        {
+            var result = CalculationAppService.Calculate(request);
+            //Context.Add(result);
+            //Context.SaveChanges();
             return result;
         }
     }

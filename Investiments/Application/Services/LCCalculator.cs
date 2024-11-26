@@ -2,9 +2,8 @@
 
 namespace Investiments.Application.Services
 {
-    public static class CdbCalculator
+    public static class LCCalculator
     {
-
         public static Calculation Calculate(CalculationRequest request)
         {
             Calculation calculation = new()
@@ -14,8 +13,8 @@ namespace Investiments.Application.Services
                 InitialValue = request.InitialValue,
                 InvestmentType = InvestmentType.CDB
             };
-            
-            for(var month = 1; month <= request.Months; month++)
+
+            for (var month = 1; month <= request.Months; month++)
             {
                 CalculateNextMonth(calculation, month);
             }
@@ -36,44 +35,16 @@ namespace Investiments.Application.Services
             if (previousCalculation == null)
             {
                 monthCalculation.GrossValue = calculation.InitialValue * (1 + (calculation.CDI * calculation.BankTax));
-            } else
+            }
+            else
             {
                 monthCalculation.GrossValue = previousCalculation.GrossValue * (1 + (calculation.CDI * calculation.BankTax));
             }
 
-            CalculateTaxValue(monthCalculation, calculation.InitialValue);
-            CalculateLiquidValue(monthCalculation);
+            monthCalculation.TaxValue = 0;
+            monthCalculation.LiquidValue = monthCalculation.GrossValue;
 
             calculation.Values.Add(monthCalculation);
-        }
-
-        private static void CalculateTaxValue(MonthlyCalculation calculation, decimal initialValue)
-        {
-            decimal taxPercent = GetTaxPercent(calculation.Month);
-            calculation.TaxValue =  taxPercent * (calculation.GrossValue - initialValue);
-        }
-        private static void CalculateLiquidValue(MonthlyCalculation calculation)
-        {
-            calculation.LiquidValue = calculation.GrossValue - calculation.TaxValue;
-        }
-
-        private static decimal GetTaxPercent(int month)
-        {
-            if (month > 24)
-            {
-                return 0.15m;
-            }
-            else if(month > 12)
-            {
-                return 0.175m;
-            }
-            else if(month > 6)
-            {
-                return 0.2m;
-            } else
-            {
-                return 0.225m;
-            }
         }
     }
 }
