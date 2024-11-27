@@ -1,4 +1,3 @@
-<div class="investment-calculator-title" id="cdb-calculator-title">CDB</div>
 <div>
   <form [formGroup]="cdbForm" (ngSubmit)="calculate()">
     <div class="investment-calculator-inputs">
@@ -52,9 +51,6 @@
             <label for="tb2"> Taxa do banco (%)</label>
           </p-floatLabel>
     </div>
-    <div class="investment-calculator-inputs">
-
-    </div>
 
     <!-- Error messages -->
     <div
@@ -75,7 +71,10 @@
     >
       Quantidade de meses deve ser maior que 1
     </div>
-    <p-button label="Calcular" type="Submit" [disabled]="disabledSubmit()" />
+    <div class="calculate-button-div">
+        <p-button label="Calcular" type="Submit" [disabled]="disabledSubmit()" />
+
+    </div>
   </form>
 
   <div class="comparativeTables" *ngIf="calculation">
@@ -84,6 +83,12 @@
         [value]="investment.values"
         [tableStyle]="{ 'min-width': '5rem' }"
       >
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+            {{ investment.investmentType == 0? 'CDB' : 'LC'}} - {{investment.bankTax | percent}}
+        </div>
+    </ng-template>
+
         <ng-template pTemplate="header">
           <tr>
             <th>Mês</th>

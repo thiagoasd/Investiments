@@ -22,10 +22,10 @@ export class CalculationService {
   }
 
   mapSeverity(investments: InvestmentCalculation): InvestmentCalculation{
-    var months = investments.calculations[0].values.length;
+
     var investment0 = investments.calculations[0];
     var investment1 = investments.calculations[1];
-    for (let index = 0; index < months; index++) {
+    for (let index = 0; index < investments.months; index++) {
       if(investment0.values[index].liquidValue > investment1.values[index].liquidValue){
         investment0.values[index].severity = 'success';
       } else {

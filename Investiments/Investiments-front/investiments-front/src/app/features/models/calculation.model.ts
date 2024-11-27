@@ -4,7 +4,7 @@ export interface Calculation {
     initialValue: number,
     bankTax: number,
     cdi: number,
-    InvestmentType: InvestmentType,
+    investmentType: InvestmentType,
     values: MonthlyCalculation[]
 }
 
