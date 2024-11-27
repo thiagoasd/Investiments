@@ -1,4 +1,4 @@
-export interface CdbCalculationRequest {
+export interface CalculationRequest {
     InitialValue: number,
     BankTax: number,
     CDI: number,

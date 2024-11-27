@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { CdbCalculatorComponent } from '../cdb-calculator/cdb-calculator.component';
+import { InvestmentComparatorComponent } from './investment-comparator/investment-comparator.component';
 
 @Component({
   selector: 'app-investment-calculator',
   standalone: true,
-  imports: [CdbCalculatorComponent],
+  imports: [InvestmentComparatorComponent],
   templateUrl: './investment-calculator.component.html',
   styleUrl: './investment-calculator.component.scss'
 })

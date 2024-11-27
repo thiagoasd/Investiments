@@ -11,7 +11,7 @@ namespace Investiments.Application.Services
                 BankTax = request.BankTax,
                 CDI = request.CDI,
                 InitialValue = request.InitialValue,
-                InvestmentType = InvestmentType.CDB
+                InvestmentType = InvestmentType.LC
             };
 
             for (var month = 1; month <= request.Months; month++)

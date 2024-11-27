@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CdbCalculationRequest } from '../models/cdb-calculation-request.model';
+import { CalculationRequest } from '../models/calculation-request.model';
 import { Observable } from 'rxjs';
-import { CdbCalculation } from '../models/cdb-calculation.model';
+import { Calculation } from '../models/calculation.model';
+import { InvestmentCalculation } from '../models/investment-calculation.model';
+import { investmentCalculationRequest } from '../models/Investment-calculation-request.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class CalculationApiService {
 
   constructor(private http: HttpClient) { }
 
-  getCdbCalculation(request: CdbCalculationRequest): Observable<CdbCalculation>{
-    return this.http.post<CdbCalculation>('https://investmentsapp-fng8h9c9ezbqb8h8.brazilsouth-01.azurewebsites.net/cdb', request);
+  getInvestmentCalculation(request: investmentCalculationRequest): Observable<InvestmentCalculation>{
+    return this.http.post<InvestmentCalculation>('https://investmentsapp-fng8h9c9ezbqb8h8.brazilsouth-01.azurewebsites.net/cdb/GetCalculation', request);
   }
 }
